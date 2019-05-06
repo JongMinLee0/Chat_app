@@ -6,53 +6,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Chat Home</title>
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/index.css"> 
 	<style>
-	.navbar{
-	padding-top: 20px;
-	padding-bottom: 20px;
-	border: 0;
-	border-radius: 0;
-	margin-bottom: 0;
-	font-size: 18px;
-	letter-spacing: 3px;
-	}
-	.navbar-brand{
-	font-size:50px;
-	padding-right: 40px;
-	}
-	
-	.navbar-nav li a:hover{
-	color: #1abc9c !important;
-	}
-	.container-fluid-top{
-	padding-top: 140px;
-	padding-bottom: 140px;
-	}
-	.container-fluid{
-	padding-top: 70px;
-	padding-bottom: 70px;
-	}
-	
-	.bg-1{
-	background-color: #474e5d; /* Dark Blue */
-	color: #ffffff;
-	}
-	.bg-2{
-	background-color: #ffffff; /* White */
-	color: #555555;
-	}
-	.bg-3{
-	background-color: #2f2f2f;
-	color: #ffffff;
-	}
-	.bg-3 a{
-	color: white;
-	font-size:20px;
-	}
-	.bg-3 a:hover{
-	color: white;
-	}
 	</style>
 </head>
 <body>
@@ -79,26 +37,48 @@
 	</div>
 </nav>
 
-<div class="container-fluid-top bg-1 text-center">
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-	</div>
-</div>
+
+	<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000"><!-- default 5000 -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="img/img2.jpg" alt="Slide 2" style="width:100%">
+                </div>
+                <div class="item">
+                    <img src="img/img1.jpg" alt="Slide 1" style="width:100%">
+                </div>
+                <div class="item">
+                    <img src="img/img3.jpg" alt="Slide 3" style="width:100%">
+                </div>
+            </div>
+            <a href="#carousel" class="left carousel-control" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a href="#carousel" class="right carousel-control" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+	
+
 <div class="container-fluid bg-2 text-center">
-	<h3>Where To Find Me?</h3>
-	<p>Lorem ipsum..</p>
+	<h3>Chat site for Practice</h3>
+	<p>Please understand if you have insufficient points.
+	<span class="glyphicon glyphicon-sunglasses"></span></p>
 </div>
 
 <footer class="container-fluid bg-3 text-center">
-	<p>Chat_App page Made By <a href="https://github.com/JongMinLee0">JongMin Lee</a></p>
+	<p>Chat_App page Made By <a href="https://github.com/JongMinLee0" 
+	data-toggle="tooltip" data-placement="top" title="GitHub!">JongMin Lee</a></p>
 </footer>
-
-<script type="js/jquery-3.4.1.js"></script>
-<script type="js/bootstrap.js"></script>
+<script>
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 </body>
 </html>
 
