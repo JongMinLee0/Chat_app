@@ -14,30 +14,7 @@
 	</style>
 </head>
 <body>
-<nav class="navbar navbar-default">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">C</a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav navbar-left">
-				<li><a href="#">About</a></li>
-				<li><a href="#">Chat</a></li>
-				<li><a href="#">Board</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">login</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
-
-
+<jsp:include page="index_nav.jsp" flush="false"/>
 	<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000"><!-- default 5000 -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -70,9 +47,7 @@
 	<span class="glyphicon glyphicon-sunglasses"></span></p>
 </div>
 
-<footer class="container-fluid bg-3 text-center">
-	<p>Chat_App page Made By <a href="https://github.com/JongMinLee0" 
-	data-toggle="tooltip" data-placement="top" title="GitHub!">JongMin Lee</a></p>
+<jsp:include page="index_foot.jsp" flush="false"/>
 </footer>
 <script>
 $(function () {
