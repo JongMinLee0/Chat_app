@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import chat_app.ex.action.signinAction;
+import chat_app.ex.action.signupAction;
 
 /**
  * Servlet implementation class HomeController
@@ -51,7 +51,7 @@ public class HomeController extends HttpServlet {
 		String page = request.getParameter("page"); // 어느 JSP에서 요청이 왔는지 확인(hidden태그이용)
 
 		if (page.equals("signup")) {
-			signinAction sig = new signinAction();
+			signupAction sig = new signupAction();
 			sig.execute(request, response);
 		}
 
