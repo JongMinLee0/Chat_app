@@ -50,8 +50,7 @@ padding-bottom: 100px;
 	}
 </script>
 
-<!-- email, nickname 중복확인 추가해야 함. 버튼을 추가해서 해야하는지 모르겠음
-     email 중복의 경우 '이미 가입된 사용자 입니다.', nickname의 경우 'nickname은 이미 사용중 입니다.' -->
+
 </head>
 <body>
 <fmt:requestEncoding value="UTF-8"/>
@@ -95,16 +94,7 @@ padding-bottom: 100px;
 </div>
 </form>
 <jsp:include page="index_foot.jsp" flush="false"/>
-<jsp:useBean id='member' class="chat.app.ex.model.MemberBean" scope="page"/>
-<c:set var="result" value='<%=request.getAttribute("result")%>'/>
-<c:choose>
-    <c:when test='${result}=="sucess"'>
-        <jsp:forward page="index.jsp"/>
-    </c:when>
-    <c:when test='${result}=="fail"'>
-        <jsp:forward page="signup.jsp"/>
-    </c:when>
-</c:choose>
+
 
 
 </body>
