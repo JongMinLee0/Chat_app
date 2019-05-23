@@ -6,7 +6,8 @@ public class MemberBean {
 	private String email;
 	private String pwd;
 	private String nick;
-
+	private String salt;
+	
 	// Constructor
 	public MemberBean() {
 	}
@@ -20,6 +21,14 @@ public class MemberBean {
 	// getter, setter 정의
 	public String getEmail() {
 		return email;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 	public void setEmail(String email) {

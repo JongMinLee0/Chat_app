@@ -103,15 +103,17 @@ public class MemberDAO {
 		boolean result = false;
 		if (this.connect()) {
 			try {
-				String sql = "INSERT INTO MEMBER VALUES(?,?,?)";
+				String sql = "INSERT INTO MEMBER VALUES(?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 
 				// dto로부터 받아온 패스워드를 암호화
 				SecurityUtil sec = new SecurityUtil();
-				String pwd = sec.encryptSHA256(dto.getPwd(), sec.generateSalt());
+				String salt = sec.generateSalt();
+				String pwd = sec.encryptSHA256(dto.getPwd(), salt);
 				pstmt.setString(1, dto.getEmail());
 				pstmt.setString(2, pwd);
 				pstmt.setString(3, dto.getNick());
+				pstmt.setString(4, salt);
 
 				int r = pstmt.executeUpdate();
 
