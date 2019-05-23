@@ -108,7 +108,7 @@ public class MemberDAO {
 
 				// dto로부터 받아온 패스워드를 암호화
 				SecurityUtil sec = new SecurityUtil();
-				String pwd = sec.encryptSHA256(dto.getPwd());
+				String pwd = sec.encryptSHA256(dto.getPwd(), sec.generateSalt());
 				pstmt.setString(1, dto.getEmail());
 				pstmt.setString(2, pwd);
 				pstmt.setString(3, dto.getNick());
