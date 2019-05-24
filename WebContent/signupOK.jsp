@@ -25,7 +25,7 @@ String result = (String)request.getAttribute("result");
 <c:if test="${result=='sucess'}">
     <script>
     alert("회원가입 되었습니다!!");
-    document.location.href="index.jsp";
+    document.location.href="login.jsp";
     </script>
 </c:if>
 <!-- 여기에 중복처리 구현 / 실패 -> 무엇이 중복되었다 -->

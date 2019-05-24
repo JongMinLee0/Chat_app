@@ -22,17 +22,18 @@ padding-right: 40%
 <body>
 <jsp:include page="index_nav.jsp" flush="false"/>
 <div class='login-wrapper'>
-	<form>
+	<form name="loginInfo" method="post" action="HomeController" onsubmit="return checkValue()">
   <div class="login-group">
     <label for="inputEmail">Email address</label>
-    <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="login-group">
     <label for="InputPassword1">Password</label>
-    <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
   </div>
   <br />
+  <input type="hidden" name="page" value="signin">
   <button type="submit" class="btn btn-primary">Sign in</button>
   <button type="submit" class="btn btn-primary" formaction="signup.jsp">Sign up</button>
 </form>	
