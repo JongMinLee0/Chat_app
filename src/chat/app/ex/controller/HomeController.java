@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import chat_app.ex.action.signinAction;
 import chat_app.ex.action.signupAction;
 
 /**
@@ -53,6 +54,9 @@ public class HomeController extends HttpServlet {
 		if (page.equals("signup")) {
 			signupAction sig = new signupAction();
 			sig.execute(request, response);
+		}else if(page.equals("signin")){
+			signinAction sia = new signinAction();
+			sia.execute(request, response);
 		}
 
 	}
