@@ -83,6 +83,7 @@ public class MemberDAO {
 						bean.setEmail(rs.getString("email"));
 						bean.setPwd(rs.getString("pwd"));
 						bean.setNick(rs.getString("nick"));
+						bean.setSalt(rs.getString("salt"));
 						list.add(bean);
 					}
 				}
