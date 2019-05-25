@@ -94,6 +94,27 @@ Attribute를 작은 scope에서 큰 scope로 찾는다.(page -> request -> sessi
 -  ``` <c: out value="${param.name}"> ``` : name에서 입력된 값을 출력
 -  ``` <c: out value="{testit}" default="Default Value"/> ``` : 변수에 값이 없을 경우 default 값 출력
 
+<**for문**>
+```jsp
+<c:forEach items="${리스트가 받아올 배열이름}" var="{for문안에서 사용할 변수}" varStatus="status"/>
+```
+varStatus : 반복횟수 횟수명 줄떄 사용
+status.current : 현재의 for문에 해당하는 번호(컬렉션 중 현재 반복에서 사용할 객체)
+
+status.index : 0부터 순서, 루프실행에서 현재 인덱스
+
+status.count : 1분터 순서, 루프실행횟수
+
+status.first : 현재 루프가 처음인 경우 true
+
+status.last : 현재 루프가 마지막인 경우 true
+
+status.begin : for문의 시작 값
+
+status.end : for문의 끝 값
+
+status.step : for문의 증가값
+
 <**if문**>
 ```jsp
 <c : if test="${A=B}">
