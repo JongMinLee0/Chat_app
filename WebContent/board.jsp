@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import = "chat.app.ex.model.BoardDAO" %>
+<%@ page import = "chat.app.ex.model.BoardBean" %>
+<%@ page import = "java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +19,19 @@
 	width: 85%;
 	padding-left: 15%;
 	padding-top:20px;
+	padding-bottom: 26%;
 	}
 </style>
 </head>
 <body>
-<jsp:include page="index_nav.jsp" flush="false"/>
+<!-- DAO를 통해 게시판에 있는 데이터베이스를 받아와서 객체에 list로써 받아왔다. -->
+<%
+BoardDAO dao = BoardDAO.getInstance();
+List<BoardBean> list = dao.getList();
+%>
 
+
+<jsp:include page="index_nav.jsp" flush="false"/>
 <div class="wrapper-table">
 <table class="table table-hover">
 <thead>
@@ -34,30 +44,27 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach var="i" begin="0" end="9">
+
+<c:set var = "list" value="<%=list%>"/>
+<c:forEach var="list" items="${list}" varStatus="status">
 <tr>
-	<td>1 </td>
-	<td>테스트를 위한 행입니다. </td>
-	<td>척</td>
-	<td>2019.5.25 </td>
-	<td>1 </td>
+	<td>${status.count}</td>
+	<td><a href="showWrite.jsp?index=${status.count}"><c:out value="${list.getTitle()}"/></a></td>
+	<td><c:out value="${list.getNick()}"/></td>
+	<td><c:out value="${list.getDate()}"/></td>
+	<td><c:out value="${list.getClick()}"/></td>
 </tr>
 </c:forEach>
+
 </tbody>
 </table>
 <button type="button" class="btn btn-default pull-right" onclick="location.href='write.jsp';">글쓰기</button>
 <div class = "text-center">
 	<ul class="pagination">
 	 <li><a href="#">1</a></li>
-	 <li><a href="#">2</a></li>
-	 <li><a href="#">3</a></li>
-	 <li><a href="#">4</a></li>
-	 <li><a href="#">5</a></li>
 	</ul>
 </div>
 </div>
-
-
 
 
 

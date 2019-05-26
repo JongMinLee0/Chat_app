@@ -25,21 +25,35 @@
 	height: 25;
 	}
 	</style>
+<script type="text/javascript">
+	function checkValue(){
+		inputForm = eval("document.writeInfo");
+		if(!inputForm.title.value){
+			alert("제목을 입력하세요");
+			inputForm.title.focus();
+			return false;
+		}
+		if(!inputForm.content.value){
+			alert("내용을 입력하세요");
+			inputForm.content.focus();
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <jsp:include page="index_nav.jsp" flush="false"/>
 
 
 <div class="wrapper-write">
-<form>
+<form name = "writeInfo" method="post" action="HomeController" onsubmit="return checkValue()">
 	<input type="text" name="title" size="80px" placeholder="제목을 입력하세요">
 	<br /><br />
-	<textarea id="contents" name="contents" rows=20 placeholder="내용을 입력하세요"></textarea>
+	<textarea id="contents" name="content" rows=20 placeholder="내용을 입력하세요"></textarea>
 	<br />
+	<input type="hidden" name="page" value="write"/>
 	<button type="submit" class="btn btn-default">작성완료</button>
 	<button type="button" class="btn btn-default" onclick="location.href='board.jsp';">취소</button>
-	
-
 </form>
 </div>
 
