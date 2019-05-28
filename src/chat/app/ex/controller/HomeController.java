@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import chat_app.ex.action.signinAction;
 import chat_app.ex.action.signupAction;
+import chat_app.ex.action.writeAction;
 
 /**
  * Servlet implementation class HomeController
@@ -57,6 +58,9 @@ public class HomeController extends HttpServlet {
 		}else if(page.equals("signin")){
 			signinAction sia = new signinAction();
 			sia.execute(request, response);
+		}else if(page.equals("write")) {
+			writeAction wri = new writeAction();
+			wri.execute(request, response);
 		}
 
 	}
