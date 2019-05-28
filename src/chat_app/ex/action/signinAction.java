@@ -18,7 +18,7 @@ public class signinAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		MemberDAO dao = MemberDAO.getInstance();
 		SecurityUtil sec = new SecurityUtil();
-		
+		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pwd");
 		

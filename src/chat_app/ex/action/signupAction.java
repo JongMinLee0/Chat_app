@@ -20,6 +20,7 @@ public class signupAction implements Action {
 		bean.setPwd(request.getParameter("pwd"));
 		bean.setNick(request.getParameter("nick"));
 
+		request.setCharacterEncoding("UTF-8");
 		boolean result = dao.InsertMember(bean);
 		String rel = "";
 		if (result)
