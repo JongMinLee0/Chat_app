@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -33,9 +34,14 @@
 <%
 //board로 부터 받은 index를 가지고 제목과 내용을 뽑아낸다.
 String index2 = request.getParameter("index");
-int index = Integer.parseInt(index2)-1;
+int index = Integer.parseInt(index2);
 BoardDAO dao = BoardDAO.getInstance();
-List<BoardBean> list = dao.getList();
+HashMap<String, Integer> map = new HashMap<String, Integer>();
+int row = Integer.parseInt(request.getParameter("row"));
+int high = Integer.parseInt(request.getParameter("high"));
+map.put("row",row);
+map.put("high",high);
+List<BoardBean> list = dao.getList(map);
 String title = list.get(index).getTitle();
 String content = list.get(index).getContent();
 
@@ -53,7 +59,7 @@ dao.click(time, click2);
 	<br /><br />
 	<textarea id="contents" name="content" rows=20 readonly><%=content%></textarea>
 	<br />
-	<button type="button" class="btn btn-default" onclick="location.href='board.jsp';">뒤로</button>
+	<button type="button" class="btn btn-default" onclick="location.href='board.jsp?pageNum=<%=request.getParameter("pageNum")%>';">뒤로</button>
 </div>
 
 <jsp:include page="index_foot.jsp" flush="false"/>

@@ -4,6 +4,8 @@
 <%@ page import = "chat.app.ex.model.BoardDAO" %>
 <%@ page import = "chat.app.ex.model.BoardBean" %>
 <%@ page import = "java.util.List" %>
+<%@ page import = "java.util.HashMap" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +29,44 @@
 <!-- DAO를 통해 게시판에 있는 데이터베이스를 받아와서 객체에 list로써 받아왔다. -->
 <%
 BoardDAO dao = BoardDAO.getInstance();
-List<BoardBean> list = dao.getList();
+HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+List<BoardBean> totalList = dao.getList();
+int size = totalList.size();
+int totalSize = size;
+if(size%10!=0 && size>10)
+	size = (size/10) + 1;
+else if(size < 10)
+	size = 1;
+else
+	size = (size/10);
+int i = 10;
+int pageNum = 1;
+int row = 1;
+int high = 10;
+if(request.getParameter("pageNum") != null){
+	pageNum = Integer.parseInt(request.getParameter("pageNum"));
+	int tempNum = totalSize + 10;
+	high = tempNum - (10*pageNum);
+	row = high - 9;
+	if(row<0)
+		row = 1;
+	map.put("row",row);
+	map.put("high",high);
+	i = high;
+}else{
+	int tempNum = totalSize + 10;
+	high = tempNum - (10);
+	row = high - 9;
+	if(row<0)
+		row = 1;
+	map.put("row",row);
+	map.put("high",high);
+	i = high;
+}
+
+List<BoardBean> list = dao.getList(map);
+
 %>
 
 
@@ -46,10 +85,11 @@ List<BoardBean> list = dao.getList();
 <tbody>
 
 <c:set var = "list" value="<%=list%>"/>
-<c:forEach var="list" items="${list}" varStatus="status">
+<%int index = 0; %>
+<c:forEach var="list" items="${list}">
 <tr>
-	<td>${status.count}</td>
-	<td><a href="showWrite.jsp?index=${status.count}"><c:out value="${list.getTitle()}"/></a></td>
+	<td><%=i--%></td>
+	<td><a href="showWrite.jsp?pageNum=<%=pageNum%>&index=<%=index++%>&high=<%=high%>&row=<%=row%>"><c:out value="${list.getTitle()}"/></a></td>
 	<td><c:out value="${list.getNick()}"/></td>
 	<td><c:out value="${list.getDate()}"/></td>
 	<td><c:out value="${list.getClick()}"/></td>
@@ -61,7 +101,10 @@ List<BoardBean> list = dao.getList();
 <button type="button" class="btn btn-default pull-right" onclick="location.href='write.jsp';">글쓰기</button>
 <div class = "text-center">
 	<ul class="pagination">
-	 <li><a href="#">1</a></li>
+	<%for(int k=1; k <= size; k++){ %>
+	 <li><a href="board.jsp?pageNum=<%=k%>" ><%=k %></a></li>
+	 <%} %>
+	
 	</ul>
 </div>
 </div>
