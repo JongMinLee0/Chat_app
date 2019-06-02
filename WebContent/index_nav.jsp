@@ -40,7 +40,7 @@ String nick = (String)session.getAttribute("nick");
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-left">
 				<li><a href="about.jsp">About</a></li>
-				<li><a href="#">Chat</a></li>
+				<li><a href="chat_box.jsp">Chat</a></li>
 				<li><a href="board.jsp">Board</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
