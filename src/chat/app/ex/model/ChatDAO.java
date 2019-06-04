@@ -67,47 +67,13 @@ public class ChatDAO {
 			List<ChatBean> list = null;
 			
 			// sql 작성해야 한다.
-			String sql = "SELECT receive, content, max(send_date) from CHAT "
-					+ "WHERE send = ? GROUP BY receive";
+			String sql = "SELECT * from CHAT WHERE ((send = ? AND receive = ?) OR "
+					+ "(send =? AND receive = ?)) ORDER BY send_date";
 			
 			if(this.connect()) {
 				try {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, send);
-					// setString 해줘야 한다.
-					if(pstmt != null) {
-						rs = pstmt.executeQuery();
-						list = new ArrayList<ChatBean>();
-						while(rs.next()) {
-							ChatBean bean = new ChatBean();
-							bean.setReceive(rs.getString("receive"));
-							bean.setSend_date(rs.getString("send_date"));
-							bean.setContent(rs.getString("content"));
-							
-							list.add(bean);
-						}
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			return list;
-		}
-		
-		public List<ChatBean> getTotalList(String send, String receive){
-			List<ChatBean> list = null;
-			
-			// sql 작성해야 한다.
-			String sql = "SELECT * FROM CHAT WHERE (send = ? AND receive = ?) OR (send = ? AND receive = ?)";
-			
-			if(this.connect()) {
-				try {
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, send);
-					pstmt.setString(2, receive);
-					pstmt.setString(3, receive);
-					pstmt.setString(4, send);
 					// setString 해줘야 한다.
 					if(pstmt != null) {
 						rs = pstmt.executeQuery();
@@ -129,6 +95,7 @@ public class ChatDAO {
 			}
 			return list;
 		}
+		
 		public boolean InsertChat(ChatBean dto) {
 			boolean result = false;
 			if(this.connect()) {
